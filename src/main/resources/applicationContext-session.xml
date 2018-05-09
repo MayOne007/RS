@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!-- 打开RedisOperationsSessionRepository这个bean，RedisHttpSessionConfiguration上的maxInactiveIntervalInSeconds属性会失效。
+		defaultMaxInactiveInterval有值就按它的秒数来回收空闲的session,有没有值就是默认的1800秒  -->
+    <!-- <bean id="sessionRepository" class="org.springframework.session.data.redis.RedisOperationsSessionRepository">
+        <constructor-arg ref="redisTemplate" />
+        <property name="defaultMaxInactiveInterval" value="60" />
+    </bean> -->
+  
+    <bean class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
+    	<property name="maxInactiveIntervalInSeconds" value="60" />
+	</bean>
+</beans>

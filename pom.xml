@@ -1,0 +1,244 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>hy</groupId>
+  <artifactId>smvcr</artifactId>
+  <version>1.0</version>
+  <packaging>war</packaging>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- 防止控制输出台中文乱码 -->
+	<argLine>-Dfile.encoding=UTF-8</argLine>
+    <spring.version>5.0.1.RELEASE</spring.version>
+    <hibernate.version>5.2.12.Final</hibernate.version>
+  </properties>
+  
+  <dependencies>  	
+  	<!-- gson -->
+	<dependency>
+		<groupId>com.google.code.gson</groupId>
+		<artifactId>Gson</artifactId>
+		<version>2.5</version>
+	</dependency>
+	 	
+	<!-- hibernate start-->
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>5.1.9</version>
+	</dependency>	 
+	<dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-core</artifactId>
+	    <version>${hibernate.version}</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-entitymanager</artifactId>
+	    <version>${hibernate.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>com.alibaba</groupId>
+		<artifactId>druid</artifactId>
+		<version>1.0.26</version>
+	</dependency>
+ 	<!-- hibernate end-->
+ 	
+ 	<!-- spingMVC start-->
+ 	<!-- 核心包 -->  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-core</artifactId>  
+        <version>${spring.version}</version>  
+    </dependency>         
+    <!-- pring IOC的基础实现，包含访问配置文件、创建和管理bean等 -->  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-beans</artifactId>  
+        <version>${spring.version}</version>  
+    </dependency>  
+ 	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>  
+		<groupId>org.springframework</groupId>  
+		<artifactId>spring-context-support</artifactId>  
+		<version>${spring.version}</version>  
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-orm</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-web</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-webmvc</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<!-- Spring表达式语言 如:datasource里读配置的值 -->   
+	<dependency>  
+		<groupId>org.springframework</groupId>  
+		<artifactId>spring-expression</artifactId>  
+		<version>${spring.version}</version>  
+	</dependency>
+	<!-- junit测试包 -->   
+	<dependency>  
+		<groupId>org.springframework</groupId>  
+		<artifactId>spring-test</artifactId>  
+		<version>${spring.version}</version>  
+	</dependency>
+	<dependency>  
+		<groupId>org.springframework</groupId>  
+		<artifactId>spring-tx</artifactId>  
+		<version>${spring.version}</version>  
+	</dependency>
+	<dependency>  
+		<groupId>org.springframework</groupId>  
+		<artifactId>spring-jdbc</artifactId>  
+		<version>${spring.version}</version>  
+	</dependency>     
+	<!-- aop start-->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-aop</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-aspects</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.aspectj</groupId>
+		<artifactId>aspectjrt</artifactId>
+		<version>1.7.3</version>
+	</dependency>
+	<dependency>
+		<groupId>org.aspectj</groupId>
+		<artifactId>aspectjweaver</artifactId>
+		<version>1.7.3</version>
+	</dependency>   
+ 	<!-- aop end-->
+ 	
+ 	<!-- Jackson start @ResponseBody注解，spring5得用2.9版本-->  
+	<dependency>  
+		<groupId>com.fasterxml.jackson.core</groupId>  
+		<artifactId>jackson-databind</artifactId>  
+		<version>2.9.2</version>  
+	</dependency>   
+    <dependency>  
+		<groupId>com.fasterxml.jackson.core</groupId>  
+		<artifactId>jackson-core</artifactId>  
+		<version>2.9.2</version>  
+	</dependency>  
+	<dependency>  
+		<groupId>com.fasterxml.jackson.core</groupId>  
+		<artifactId>jackson-annotations</artifactId>  
+		<version>2.9.2</version>  
+	</dependency>  
+ 	<!-- Jackson end -->
+ 	<!-- spingMVC end--> 
+	 	
+	<!-- junit -->
+	<dependency>
+	    <groupId>junit</groupId>
+	    <artifactId>junit</artifactId>
+	    <version>4.12</version>
+	    <scope>test</scope>
+	</dependency>
+	 	
+	<!-- log4j -->
+	<dependency>
+	    <groupId>log4j</groupId>
+	    <artifactId>log4j</artifactId>
+	    <version>1.2.12</version>
+	</dependency>
+ 	<dependency>  
+		<groupId>org.slf4j</groupId>  
+		<artifactId>slf4j-log4j12</artifactId>  
+		<version>1.7.2</version>  
+	</dependency>
+	 	
+	<!-- jsp start-->
+	<dependency>
+		<groupId>javax.activation</groupId>
+		<artifactId>activation</artifactId>
+		<version>1.1</version>
+	</dependency>
+	<dependency>
+		<groupId>taglibs</groupId>
+		<artifactId>standard</artifactId>
+		<version>1.1.2</version>
+	</dependency>
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>javax.servlet-api</artifactId>
+		<scope>provided</scope>
+		<version>3.0.1</version>
+	</dependency>
+	<dependency>
+		<groupId>javax.servlet.jsp</groupId>
+		<artifactId>jsp-api</artifactId>
+		<version>2.1</version>
+		<scope>provided</scope>
+	</dependency>
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>jstl</artifactId>
+		<version>1.2</version>
+	</dependency>
+	<!-- jsp end-->
+	
+	<!-- Redis start -->
+	<dependency>
+		<groupId>org.springframework.data</groupId>
+		<artifactId>spring-data-redis</artifactId>
+		<version>2.0.2.RELEASE</version>
+	</dependency>
+	<dependency>
+	    <groupId>redis.clients</groupId>
+	    <artifactId>jedis</artifactId>
+	    <version>2.9.0</version>
+	</dependency>
+	<!-- <dependency>
+		<groupId>io.lettuce</groupId>
+		<artifactId>lettuce-core</artifactId>
+		<version>5.0.1.RELEASE</version>
+	</dependency> -->
+	<!-- Redis end -->
+	
+    <!-- Spring Session start -->
+    <dependency>
+	    <groupId>org.springframework.session</groupId>
+	    <artifactId>spring-session-data-redis</artifactId>
+	    <version>2.0.0.RELEASE</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.springframework.session</groupId>
+	    <artifactId>spring-session-core</artifactId>
+	    <version>2.0.0.RELEASE</version>
+	</dependency>
+	<!-- Spring Session end -->
+	
+  </dependencies>
+  <build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.6.0</version>
+			<configuration>
+				<source>1.8</source>
+				<target>1.8</target>
+				<encoding>utf8</encoding>
+			</configuration>
+		</plugin>
+	</plugins>
+ </build>
+</project>
