@@ -19,7 +19,7 @@ import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 
-public class RedisUtil {
+public class RedisUtils {
 
 	@Autowired
 	@Qualifier("redisTemplate")

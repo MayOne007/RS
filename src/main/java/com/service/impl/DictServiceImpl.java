@@ -1,5 +1,7 @@
 package com.service.impl;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -56,7 +58,5 @@ public class DictServiceImpl extends BaseServiceImpl<Dict, Integer> implements D
 		System.out.println("cacheOne");
 		return dictDao.getById(id);
 	}
-	
-	
 	
 }

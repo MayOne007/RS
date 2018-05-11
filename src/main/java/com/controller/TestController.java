@@ -1,7 +1,6 @@
 package com.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,16 +17,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.entity.Dict;
 import com.service.DictService;
-import com.util.GsonUtil;
 
-import core.util.RedisUtil;
+import core.util.RedisUtils;
+import core.util.SpringUtils;
 
 @Controller("testController")
 @RequestMapping("/test")
 public class TestController {
 
 	@Autowired
-	private RedisUtil redisUtil;
+	private RedisUtils redisUtil;
 	
 	@Autowired
 	private DictService dictService;
@@ -63,7 +62,16 @@ public class TestController {
 		Dict rd = cacheManager.getCache("user").get(1,Dict.class);
 		cacheMap.put("cacheObject",  rd);
 		redisUtil.setCacheMap("cacheMap", cacheMap);
+		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		return redisUtil.getCacheMap("cacheMap");
 	}
 	
+	
+	@ResponseBody
+	@RequestMapping(value="rgb", method = RequestMethod.GET)
+	public Object registerBean(HttpServletRequest request) {		
+		//SpringUtils.registerBean("dictService", "com.service.impl.DictServiceImpl");
+		SpringUtils.registerBean("testController", "com.controller.TestController");
+		return "OK";
+	}
 }

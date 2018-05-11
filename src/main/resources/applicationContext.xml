@@ -109,6 +109,8 @@
 	<!-- 启用缓存注解功能 -->
 	<cache:annotation-driven cache-manager="redisCacheManager" />
 
-	<bean id="redisUtil" class="core.util.RedisUtil" />
+	<bean id="redisUtils" class="core.util.RedisUtils" />
 
+	<bean id="springUtils" class="core.util.SpringUtils" />
+	
 </beans>
