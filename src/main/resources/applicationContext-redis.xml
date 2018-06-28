@@ -10,7 +10,12 @@
 	<bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
 		<constructor-arg>
 			<bean class="org.springframework.data.redis.connection.RedisStandaloneConfiguration"
-	    		c:host-name="${redis.host}" c:port="${redis.port}" />
+	    		c:host-name="${redis.host}" c:port="${redis.port}" >
+	    		 <property name="password">
+	    		 	<bean class="org.springframework.data.redis.connection.RedisPassword" 
+	    		 		factory-method="of" c:password-as-string="${redis.password}" />    		 	
+	    		 </property>
+	    	</bean>
 		</constructor-arg>		
 	</bean>
 	

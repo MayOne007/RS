@@ -23,9 +23,9 @@ public class SpringJunitTest extends SessionTestCase{
 	
 	@Test
 	public void testLazy() {
-		Dict d = dictService.loadById(13);
+		//Dict d = dictService.loadById(13);
 		//Set l = d.getChildDicts();
-		System.out.println(d.getParentDict());
+		//System.out.println(d.getParentDict());
 	}
 	
 	/**
@@ -33,7 +33,7 @@ public class SpringJunitTest extends SessionTestCase{
 	 */
 	@Test
 	public void testTxAaop() {
-		dictService.txOne();
+		//dictService.txOne();
 	}
 	
 	/*public static void main(String[] args) {

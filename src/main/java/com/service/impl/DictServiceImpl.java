@@ -1,7 +1,5 @@
 package com.service.impl;
 
-import org.hibernate.Query;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -14,7 +12,7 @@ import com.service.DictService;
 
 import core.service.BaseServiceImpl;
 
-@Service
+@Service("dictService")
 public class DictServiceImpl extends BaseServiceImpl<Dict, Integer> implements DictService {
 	
 	@Autowired
@@ -52,10 +50,10 @@ public class DictServiceImpl extends BaseServiceImpl<Dict, Integer> implements D
 	}
 
 	/*@CacheEvict(value="user", key="#id",beforeInvocation=true)*/
-	@Cacheable(value="user", key="#id")
+	/*@Cacheable(value="user", key="#id")*/
 	@Override
 	public Object cacheOne(Integer id) {
-		System.out.println("cacheOne");
+		System.out.println("-------------------------------cacheTwo-------------------------------");
 		return dictDao.getById(id);
 	}
 	

@@ -22,9 +22,9 @@
 	 	
 	<!-- hibernate start-->
 	<dependency>
-		<groupId>mysql</groupId>
-		<artifactId>mysql-connector-java</artifactId>
-		<version>5.1.9</version>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	    <version>5.1.46</version>
 	</dependency>	 
 	<dependency>
 	    <groupId>org.hibernate</groupId>

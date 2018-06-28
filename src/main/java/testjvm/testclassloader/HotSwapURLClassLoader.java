@@ -14,7 +14,7 @@ import java.util.Map;
   */
 public class HotSwapURLClassLoader extends URLClassLoader {
  
-    //缓存加载class文件的最后最新修改时间
+	//缓存加载class文件的最后最新修改时间
     public static Map<String,Long> cacheLastModifyTimeMap = new HashMap<String,Long>();
  
     //工程class类所在的路径
@@ -55,26 +55,25 @@ public class HotSwapURLClassLoader extends URLClassLoader {
         //不同的HotSwapURLClassLoader实例是不共享缓存的
         clazz = findLoadedClass(name);
         if (clazz != null ) {
-            /*if (resolve){
+            if (resolve){
                 resolveClass(clazz);
-            }*/
+            }
             //如果class类被修改过，则重新加载
             if (isModify(name)) {
                 hcl = new HotSwapURLClassLoader();
                 clazz = customLoad(name, false, hcl);
             }
-            System.out.println(name);
             return (clazz);
         }
  
         //如果类的包名为"java."开始，则有系统默认加载器AppClassLoader加载
-        if(name.startsWith("java.")){
-        	System.out.println(name);
+        if(name.startsWith("java.")){ 	
         	/*return super.loadClass(name, resolve);*/
             try {
                 //得到系统默认的加载cl，即AppClassLoader
                 ClassLoader system = ClassLoader.getSystemClassLoader();
                 clazz = system.loadClass(name);
+                System.out.println("app: " + name);
                 if (clazz != null) {
                     if (resolve)
                         resolveClass(clazz);
@@ -97,13 +96,15 @@ public class HotSwapURLClassLoader extends URLClassLoader {
       * @throws ClassNotFoundException
       */
      public Class<?> customLoad(String name, boolean resolve,ClassLoader cl) throws ClassNotFoundException {
+    	 
          Class<?> clazz = ((HotSwapURLClassLoader)cl).findClass(name);
+         System.out.println("user: " + name);
          if (resolve)
              ((HotSwapURLClassLoader)cl).resolveClass(clazz);
          //缓存加载class文件的最后修改时间
          long lastModifyTime = getClassLastModifyTime(name);
          cacheLastModifyTimeMap.put(name,lastModifyTime);
-         System.out.println(name);
+         
          return clazz;
      }
 
@@ -112,10 +113,10 @@ public class HotSwapURLClassLoader extends URLClassLoader {
       * @param name
       * @return
       */
-     private boolean isModify(String name){
-        long lastmodify = getClassLastModifyTime(name);
-        long previousModifyTime = cacheLastModifyTimeMap.get(name);
-        if(lastmodify>previousModifyTime){
+     private boolean isModify(String name){   	 
+        long lastmodify = getClassLastModifyTime(name);    
+        long previousModify = cacheLastModifyTimeMap.get(name);
+        if(lastmodify>previousModify){
             return true;
        }
        return false;
